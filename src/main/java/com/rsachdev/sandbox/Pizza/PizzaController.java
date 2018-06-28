@@ -21,13 +21,13 @@ public class PizzaController {
         return pizzas;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Optional<Pizza> getById(@PathVariable("id") String id){
         Optional<Pizza> pizza = this.pizzaRepository.findById(id);
         return pizza;
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public Pizza getByName(@PathVariable("name") String name){
         Pizza pizza = this.pizzaRepository.findByName(name);
         return pizza;
@@ -41,5 +41,11 @@ public class PizzaController {
     @PutMapping
     public void update(@RequestBody Pizza pizza){
         this.pizzaRepository.save(pizza);
+    }
+
+    @GetMapping("pizzaId/{name}")
+    public String getPizzaIdFromName(@PathVariable("name") String name){
+        Pizza pizza = this.pizzaRepository.findByName(name);
+        return pizza.getId();
     }
 }

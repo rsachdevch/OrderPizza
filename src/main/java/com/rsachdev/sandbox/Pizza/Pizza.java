@@ -9,6 +9,9 @@ public class Pizza {
     private String id;
     private String name;
 
+    public Pizza() {
+    }
+
     public Pizza(String name) {
         this.name = name;
     }
